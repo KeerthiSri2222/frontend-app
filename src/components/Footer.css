@@ -1,0 +1,8 @@
+.App-Footer{
+    background-color: cadetblue;
+    color: black;
+    display: flex;
+    justify-content: space-between; 
+    padding: 10px;
+    
+}
