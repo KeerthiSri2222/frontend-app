@@ -1,28 +1,34 @@
-import Content from "./components/Content.jsx"
-import Header from "./components/Header.jsx"
-import Footer from "./components/Footer.jsx"
-import Login from "./components/Login.jsx"
-import Register from "./components/Register.jsx"
-import Cart from "./components/Cart.jsx"
-import Orders from "./components/Orders.jsx"
-import Logout from "./components/Logout.jsx"
-import { BrowserRouter,Route,Routes } from "react-router-dom" 
+import { useState, createContext } from "react";
+import Header from "./components/Header";
+import Content from "./components/Content";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Register from "./components/Register";
+import Cart from "./components/Cart";
+import Orders from "./components/Orders";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+export const AppContext = createContext();
 function App() {
-  return (<div>
-    <BrowserRouter>
-    <Header/>
-    <Routes>
-    <Route index element={<Content/>}/>
-    <Route path="cart" element={<Cart/>}/>
-    <Route path="orders" element={<Orders/>}/>
-    <Route path="login" element={<Login/>}/>
-    <Route path="register" element={<Register/>}/>
-    <Route path="logout" element={<Logout/>}/>
-    </Routes>
-    <Footer/>
-    </BrowserRouter>
-  </div>
-  )
-
+  const [user, setUser] = useState({});
+  const [cart,setCart] = useState([])
+  return (
+    <div>
+      <AppContext.Provider value={{ user, setUser,cart,setCart }}>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route index element={<Content />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="login" element={<Login />} />
+            <Route path="logout" element={<Logout />} />
+            <Route path="register" element={<Register />} />
+            <Route path="orders" element={<Orders />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </AppContext.Provider>
+    </div>
+  );
 }
-export default App
+export default App;
