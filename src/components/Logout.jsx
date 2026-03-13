@@ -1,10 +1,13 @@
-function Logout(){
-    return(
-        <div>
-            
-            <p>You have been logged out.</p>
-            <p><a href="/">Go back to home</a></p>
-        </div>
-    )
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import App, { AppContext } from "../App";
+function Logout() {
+  const { user, setUser } = useContext(AppContext);
+  const Navigate = useNavigate();
+  useEffect(() => {
+    setUser({});
+    Navigate("/");
+  }, []);
+  return <h2>Logout Page</h2>;
 }
-export default Logout
+export default Logout;

@@ -1,8 +1,9 @@
 .App-Footer{
-    background-color: cadetblue;
+    background-color: rgb(190, 124, 95);
     color: black;
-    display: flex;
-    justify-content: space-between; 
-    padding: 10px;
     text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
